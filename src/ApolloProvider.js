@@ -10,7 +10,7 @@ import {
 import { setContext } from 'apollo-link-context'
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://mysterious-beyond-96868.herokuapp.com/',
 })
 
 const authLink = setContext(() => {
