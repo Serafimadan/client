@@ -12,10 +12,13 @@ const options = [
 ]
 
 const PostForm = ({ categoryFiltered, postsQuery }) => {
-  const { values, setValues, onChange, onSubmit } = useForm(createPostCallback, {
-    body: '',
-    category: categoryFiltered || '',
-  })
+  const { values, setValues, onChange, onSubmit } = useForm(
+    createPostCallback,
+    {
+      body: '',
+      category: categoryFiltered || '',
+    }
+  )
   const [createPost, { error }] = useMutation(CREATE_POST_MUTATION)
 
   useEffect(() => {
@@ -81,17 +84,24 @@ const CREATE_POST_MUTATION = gql`
       body
       category
       createdAt
-      username
+      author {
+        username
+        imageUrl
+      }
       likes {
         id
-        username
+        user {
+          username
+        }
         createdAt
       }
       likeCount
       comments {
         id
         body
-        username
+        author {
+          username
+        }
         createdAt
       }
       commentCount
